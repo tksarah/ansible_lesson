@@ -4,12 +4,12 @@
 * Ansible 2.0.1
 
 ## Administration tasks
-まず、ホストの準備をする。（未記載,これもPlaybook用意）
+まず、ホストの準備をする。[ホストの準備](https://github.com/tksarah/build_host)
 
 ## Preparation
 * Ansibleホスト用、ターゲット用のDockerコンテナイメージが準備されている
 * リバースプロキシのDockerコンテナイメージが準備されている
-* このリポジトリを clone した後、lesson1_files/tools/setup.sh の HOSTADDR にホストのIPアドレスを入れる
+* roles/{lesson1,lesson2}/files/{lesson1_files,lesson2_files}/tools/setup.sh の HOSTADDR にホストのIPアドレスを入れる（ホストの準備によりPlaybookを実行した場合は自動的に入る）
 
 ## Details of this playbook 
 Ansible ハンズオンを行うための以下の準備を行うPlaybook
@@ -19,7 +19,7 @@ Ansible ハンズオンを行うための以下の準備を行うPlaybook
 * ユーザ毎にAnsible HostとAnsible Targtのコンテナを起動
  
 ## Run Playbook
-作成するユーザのリストを vars/userlist.yml き記載する
+作成するユーザのリストを roles/{lesson1,lesson2}/vars/userlist.yml き記載する
 ```
 group1: [ 'user1' , 'user2' , 'user3' ]
 group2: [ 'user4' , 'user5' , 'user6' ]
@@ -32,5 +32,5 @@ main.yml の with_items のパラメータを修正する
 ユーザ毎にハンズオンできるように準備するためのPlaybookを実行
 
 ```
-ansible-playbook -i hosts main.yml
+ansible-playbook -i hosts -e lesson=1 main.yml
 ```
