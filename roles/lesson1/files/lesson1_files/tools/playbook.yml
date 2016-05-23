@@ -1,0 +1,48 @@
+- hosts: localhost
+  gather_facts: no
+
+  vars:
+    tname: "{{ user }}_l1_target"
+    hname: "{{ user }}_l1_host"
+    port: "{{ cport }}:80"
+    ops: "absent"
+
+  tasks:
+    - block:
+        - name: boot ansible target container
+          docker:
+            name: "{{ tname }}"
+            image: tksarah/lesson_ansible_target_pkged
+            detach: true
+            state: started
+            command: "/usr/sbin/sshd -D"
+            ports:
+              - "{{ port }}"
+            dns: ["127.0.0.1"]
+
+        - name: boot ansible host container
+          docker:
+            name: "{{ hname }}"
+            image: tksarah/lesson1_ansible_host
+            state: started
+            volumes:
+            - /root/ansible_lesson1/_test:/mnt
+            command: "/bin/bash"
+            links:
+              - "{{ tname }}:web"
+            tty: true
+      tags: bootup
+
+    - block:
+        - name:  remove ansible target container
+          docker:
+            name: "{{ tname }}"
+            image: tksarah/lesson_ansible_target_pkged
+            state: "{{ ops }}"
+
+        - name: remove ansible host container
+          docker:
+            name: "{{ hname }}"
+            image: tksarah/lesson1_ansible_host
+            state: "{{ ops }}"
+      tags: remove
