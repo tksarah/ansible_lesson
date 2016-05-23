@@ -6,7 +6,7 @@
     port: "{{ item.port }}"
     # password is "ansible-itc"
     password: "$6$rounds=656000$OLg7NBkmbfAiDoss$/6POpB8cxH17ZG3X8YuN8156orj4xgKaVxqgFWJANH2r9sjz7pL.RFcIlQhNN635QpiFpQgu6ryGK5dHeEXYT."
-    ldir: lesson_dir
+    ldir: lesson2_files
    with_items:
      - "{{ group }}"
 

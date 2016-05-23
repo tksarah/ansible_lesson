@@ -1,4 +1,4 @@
-# Lesson1 for Ansible Handson
+# Lesson for Ansible Handson
 * CentOS 7.2
 * Docker Engine v1.11
 * Ansible 2.0.1
