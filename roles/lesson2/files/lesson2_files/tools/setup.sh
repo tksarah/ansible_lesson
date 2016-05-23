@@ -2,7 +2,7 @@
 
 INVENTORY=$HOME/lesson2_files/tools/hosts
 PLAYBOOK=$HOME/lesson2_files/tools/playbook.yml
-HOST="HOSTADDR"
+HOST="192.168.0.153"
 WP="${USER}_wordpress"
 PORT="INPUTPORT"
 

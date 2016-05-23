@@ -23,10 +23,10 @@
         - name: boot ansible host container
           docker:
             name: "{{ hname }}"
-            image: tksarah/lesson1_ansible_host
+            image: "tksarah/lesson1_ansible_host"
             state: started
             volumes:
-            - /root/ansible_lesson1/_test:/mnt
+            - /root/ansible_lesson/roles/lesson1/files/_test:/mnt
             command: "/bin/bash"
             links:
               - "{{ tname }}:web"
@@ -43,6 +43,6 @@
         - name: remove ansible host container
           docker:
             name: "{{ hname }}"
-            image: tksarah/lesson1_ansible_host
+            image: "tksarah/lesson1_ansible_host"
             state: "{{ ops }}"
       tags: remove

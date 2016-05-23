@@ -5,11 +5,11 @@
     - name: Copy files
       copy: src={{ ldir }} dest=/home/{{ user }} owner={{ user }} group={{ user }} mode=0644
 
-    - name: Change modef for a setupsh
+    - name: Change mode for a setupsh
       file: path=/home/{{ user }}/{{ ldir }}/tools/setup.sh mode=0755
-    - name: Change modef for a initial.sh
+    - name: Change mode for a initial.sh
       file: path=/home/{{ user }}/{{ ldir }}/tools/initial.sh mode=0755
-    - name: Change modef for a login.sh
+    - name: Change mode for a login.sh
       file: path=/home/{{ user }}/{{ ldir }}/login.sh mode=0755
 
     - name: Replace setup.sh
@@ -18,7 +18,9 @@
     - name: Add a line in .bashrc
       lineinfile: dest=/home/{{ user }}/.bashrc line="alias docker=\'echo \"You cannot docker command.\"\'"
 
-    - shell: echo "{{ user }}" >> userlist chdir=dockerfile/
+    - name: Save user in userlist
+      shell: echo "{{ user }}" >> userlist chdir="{{ dockerfiledir }}"
+
   become_user: root
   become: true
 
