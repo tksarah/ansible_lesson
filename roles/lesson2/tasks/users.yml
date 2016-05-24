@@ -1,13 +1,8 @@
 - name: Copy dockerfile
   copy: src=dockerfile dest=/tmp
 
-- name: Change mode for a *.sh
-  file: path={{ outer_item }} mode=0755
-  with_items:
-    - /tmp/dockerfile/create_proxy.sh
-    - /tmp/_test/auto_config.sh
-  loop_control:
-    loop_var: outer_item
+- name: Change mode for a create_proxy.sh
+  file: path=/tmp/dockerfile/create_proxy.sh mode=0755
 
 - block:
     - name: Add user
