@@ -1,10 +1,5 @@
-- name: Copy some files
-  copy: src={{ outer_item }} dest=/tmp
-  with_items:
-    - dockerfile
-    - _test
-  loop_control:
-    loop_var: outer_item
+- name: Copy dockerfile
+  copy: src=dockerfile dest=/tmp
 
 - name: Change mode for a *.sh
   file: path={{ outer_item }} mode=0755
