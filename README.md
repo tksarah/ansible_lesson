@@ -1,7 +1,7 @@
 # Lesson for Ansible Handson
 * CentOS 7.2
 * Docker Engine v1.11
-* Ansible 2.0.1
+* Ansible 2.1.X （注意）
 
 ## Administration tasks
 まず、ホストの準備をする。[ホストの準備](https://github.com/tksarah/build_host)
