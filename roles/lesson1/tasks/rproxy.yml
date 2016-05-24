@@ -2,6 +2,12 @@
   script: /tmp/dockerfile/create_proxy.sh creates=/tmp/dockerfile/myproxy
 
 - block:
+    - name: login to DockerHub remote registry using your account
+      docker_login:
+        username: "{{ docker_hub_uname }}"
+        password: "{{ docker_hub_pass }}"
+        email: "{{ docker_hub_email }}"
+
     - name: Build rproxy image
       docker_image: path="/tmp/dockerfile" name="tksarah/rproxy" state=present force=true
 
