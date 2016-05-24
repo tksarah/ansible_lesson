@@ -1,3 +1,19 @@
+- name: Copy some files
+  copy: src={{ outer_item }} dest=/tmp
+  with_items:
+    - dockerfile
+    - _test
+  loop_control:
+    loop_var: outer_item
+
+- name: Change mode for a *.sh
+  file: path={{ outer_item }} mode=0755
+  with_items:
+    - /tmp/dockerfile/create_proxy.sh
+    - /tmp/_test/auto_config.sh
+  loop_control:
+    loop_var: outer_item
+
 - block:
     - name: Add user
       user: name={{ user }} password={{ password }} shell=/bin/bash groups=docker append=yes
@@ -5,12 +21,14 @@
     - name: Copy files
       copy: src={{ ldir }} dest=/home/{{ user }} owner={{ user }} group={{ user }} mode=0644
 
-    - name: Change mode for a setupsh
-      file: path=/home/{{ user }}/{{ ldir }}/tools/setup.sh mode=0755
-    - name: Change mode for a initial.sh
-      file: path=/home/{{ user }}/{{ ldir }}/tools/initial.sh mode=0755
-    - name: Change mode for a login.sh
-      file: path=/home/{{ user }}/{{ ldir }}/login.sh mode=0755
+    - name: Change mode for some files
+      file: path={{ outer_item }} mode=0755
+      with_items:
+        - /home/{{ user }}/{{ ldir }}/tools/setup.sh
+        - /home/{{ user }}/{{ ldir }}/tools/initial.sh
+        - /home/{{ user }}/{{ ldir }}/login.sh
+      loop_control:
+        loop_var: outer_item
 
     - name: Replace setup.sh
       replace: dest=/home/{{ user }}/{{ ldir }}/tools/setup.sh regexp='INPUTPORT' replace="{{ port }}"
@@ -19,14 +37,13 @@
       lineinfile: dest=/home/{{ user }}/.bashrc line="alias docker=\'echo \"You cannot docker command.\"\'"
 
     - name: Save user in userlist
-      shell: echo "{{ user }}" >> userlist chdir="{{ dockerfiledir }}"
-
+      shell: echo "{{ user }}" >> userlist chdir=/tmp/dockerfile
   become_user: root
   become: true
 
 - block:
     - name: Run containers
-      shell: "bash /home/{{ user }}/{{ ldir }}/tools/initial.sh {{ port }}"
+      script: /home/{{ user }}/{{ ldir }}/tools/initial.sh {{ port }}
       register: output
 
     - debug: msg="{{ output.stdout_lines }}"

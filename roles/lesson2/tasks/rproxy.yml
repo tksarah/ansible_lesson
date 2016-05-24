@@ -1,23 +1,20 @@
 - name: Create proxy fiile
-  shell: /{{ dockerfiledir }}/create_proxy.sh chdir={{ dockerfiledir }} creates=myproxy
+  script: /tmp/dockerfile/create_proxy.sh creates=/tmp/dockerfile/myproxy
 
 - block:
     - name: Build rproxy image
-      docker_image: path="{{ dockerfiledir }}/" name="tksarah/rproxy" state=build
+      docker_image: path="/tmp/dockerfile" name="tksarah/rproxy" state=present force=true
 
     - name: Run Reverse Proxy on my container
       docker:
         name: "rproxy"
         image: tksarah/rproxy
         detach: true
-        state: started
+        state: reloaded
         ports:
           - "80:80"
         tty: true
   tags: rproxy
 
 - name: Clean up
-  file: path="{{ dockerfiledir }}/{{ item }}" state=absent
-  with_items:
-    - myproxy
-    - userlist
+  file: path="/tmp/dockerfile" state=absent

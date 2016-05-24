@@ -1,4 +1,3 @@
 # password is "ansible-itc"
 password: "$6$rounds=656000$OLg7NBkmbfAiDoss$/6POpB8cxH17ZG3X8YuN8156orj4xgKaVxqgFWJANH2r9sjz7pL.RFcIlQhNN635QpiFpQgu6ryGK5dHeEXYT."
 ldir: lesson2_files
-dockerfiledir: /root/ansible_lesson/roles/lesson2/files/dockerfile

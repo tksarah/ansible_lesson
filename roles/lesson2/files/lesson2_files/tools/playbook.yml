@@ -26,7 +26,7 @@
             image: tksarah/lesson2_ansible_host
             state: started
             volumes:
-            - /root/ansible_lesson/roles/lesson2/files/_test:/mnt
+            - /root/ansible_lesson/roles/lesson2/files/_test:/mnt:ro
             command: "/bin/bash"
             links:
               - "{{ tname }}:web"
