@@ -1,10 +1,15 @@
-- include_vars: userlist.yml
-- include: users.yml
-  vars:
-    user: "{{ item.name }}"
-    port: "{{ item.port }}"
-  with_items:
-    - "{{ group }}"
+- block:
+    - include_vars: userlist.yml
+    - include: users.yml
+      vars:
+        user: "{{ item.name }}"
+        port: "{{ item.port }}"
+      with_items:
+        - "{{ group }}"
 
-- include_vars: docker_var.yml
-- include: rproxy.yml
+    - include_vars: docker_var.yml
+    - include: rproxy.yml
+
+  rescue:
+      - name: Rollback ... delete template files
+        file: path="/tmp/dockerfile" state=absent
