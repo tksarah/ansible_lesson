@@ -23,8 +23,8 @@
             name: "{{ hname }}"
             image: "tksarah/lesson1_ansible_host"
             state: started
-            volumes:
-            - /root/ansible_lesson/roles/lesson1/files/_test:/mnt:ro
+            volumes: 
+              - "/_test:/mnt:ro"
             command: "/bin/bash"
             links:
               - "{{ tname }}:web"
