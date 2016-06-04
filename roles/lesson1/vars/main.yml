@@ -1,3 +1,5 @@
 # password is "ansible-itc"
-password: "$6$rounds=656000$OLg7NBkmbfAiDoss$/6POpB8cxH17ZG3X8YuN8156orj4xgKaVxqgFWJANH2r9sjz7pL.RFcIlQhNN635QpiFpQgu6ryGK5dHeEXYT."
+#password: "$6$rounds=656000$OLg7NBkmbfAiDoss$/6POpB8cxH17ZG3X8YuN8156orj4xgKaVxqgFWJANH2r9sjz7pL.RFcIlQhNN635QpiFpQgu6ryGK5dHeEXYT."
+# password is "ansible"
+password: "$6$rounds=656000$0Wxbi/iLlKwCrzJ9$L25QCglHYQD6n9RlxJJkVP3DykDIIEwjscA.JOOwfjenDNy4EZqfwwGKs6lTdLntzJCXF8wgxIycx33fIsrhW0"
 ldir: lesson1_files
