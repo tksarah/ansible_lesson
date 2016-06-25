@@ -10,6 +10,7 @@
 * Ansibleホスト用、ターゲット用のDockerコンテナイメージが準備されている
 * リバースプロキシのDockerコンテナイメージが準備されている
 * roles/{lesson1,lesson2}/files/{lesson1_files,lesson2_files}/tools/setup.sh の HOSTADDR にホストのIPアドレスを入れる（ホストの準備によりPlaybookを実行した場合は自動的に入る）
+* roles/{lesson1,lesson2}/files/dockerfile/create_proxy.sh の HOSTADDR にホストのIPアドレスを入れる（ホストの準備によりPlaybookを実行した場合は自動的に入る）
 
 ## Details of this playbook
 Ansible ハンズオンを行うための以下の準備を行うPlaybook
