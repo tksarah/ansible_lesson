@@ -2,10 +2,24 @@
   hosts: localhost
   gather_facts: no
 
+  pre_tasks:
+    - name: Pre task ... Set IP address
+      replace: dest={{ item }}
+        regexp='HOSTADDR|([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})'
+        replace="{{ ip }}"
+      with_items:
+        - "/root/ansible_lesson/roles/lesson1/files/dockerfile/create_proxy.sh"
+        - "/root/ansible_lesson/roles/lesson2/files/dockerfile/create_proxy.sh"
+        - "/root/ansible_lesson/roles/lesson1/files/lesson1_files/tools/setup.sh"
+        - "/root/ansible_lesson/roles/lesson2/files/lesson2_files/tools/setup.sh"
+      when: ip is defined
+
   roles: 
     - { role: lesson1, when: "lesson == '1'" }
     - { role: lesson2, when: "lesson == '2'" }
-    - { role: delete1, when: "lesson == 'del1'" }
-    - { role: delete2, when: "lesson == 'del2'" }
+    - { role: delete, when: "lesson == 'del1' or lesson == 'del2'" }
+
+    #- { role: delete1, when: "lesson == 'del1'" }
+    #- { role: delete2, when: "lesson == 'del2'" }
       
 
