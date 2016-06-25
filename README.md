@@ -4,7 +4,9 @@
 * Ansible 2.1.X （注意）
 
 ## Administration tasks
-まず、ホストの準備をする。[ホストの準備](https://github.com/tksarah/build_host)
+* ホストの準備をする。[ホストの準備](https://github.com/tksarah/build_host)
+* ホスト側の準備と同等の環境ができていれば、単体でも利用可能（ただしその場合は Playbook 実行時に ip=XXX.XXX.XXX.XXX とそのホストのIPアドレスを渡してやる）
+
 
 ## Preparation
 * Ansibleホスト用、ターゲット用のDockerコンテナイメージが準備されている
