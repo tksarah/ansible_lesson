@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST="192.168.166.214"
+HOST="HOSTADDR"
 OUTFILE="/tmp/dockerfile/myproxy"
 INFILE="/tmp/dockerfile/userlist"
 
