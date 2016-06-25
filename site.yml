@@ -19,7 +19,3 @@
     - { role: lesson2, when: "lesson == '2'" }
     - { role: delete, when: "lesson == 'del1' or lesson == 'del2'" }
 
-    #- { role: delete1, when: "lesson == 'del1'" }
-    #- { role: delete2, when: "lesson == 'del2'" }
-      
-
