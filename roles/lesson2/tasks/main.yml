@@ -1,7 +1,6 @@
 - block:
     - include: ready.yml
 
-    - include_vars: userlist.yml
     - include: users.yml
       vars:
         user: "{{ item.name }}"

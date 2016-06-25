@@ -1,0 +1,15 @@
+- name: Delete _test
+  file: path=/_test state=absent
+
+- include: del.yml
+  vars:
+    user: "{{ item.name }}"
+    t1name: "{{ item.name }}_l1_target"
+    h1name: "{{ item.name }}_l1_host"
+    t2name: "{{ item.name }}_l2_target"
+    h2name: "{{ item.name }}_l2_host"
+  with_items:
+    - "{{ group }}"
+
+- name: remove reverse proxy container 
+  docker_container: name=rproxy image="tksarah/rproxy" state=absent

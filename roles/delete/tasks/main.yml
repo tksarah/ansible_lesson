@@ -1,4 +1,3 @@
-- include_vars: userlist.yml
 - include: users.yml
   vars:
     user: "{{ item.name }}"
