@@ -1,9 +1,0 @@
-- block:
-
-    - include_vars: userlist.yml
-    - include: users.yml
-      vars:
-        user: "{{ item.name }}"
-        port: "{{ item.port }}"
-      with_items:
-        - "{{ group }}"

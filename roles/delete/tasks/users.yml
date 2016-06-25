@@ -1,0 +1,7 @@
+- name: Delete lesson1 directory for {{ user }}
+  file: path="/home/{{ user }}/lesson1_files" state=absent
+  when: lesson == "del1"
+
+- name: Delete lesson2 directory for {{ user }}
+  file: path="/home/{{ user }}/lesson2_files" state=absent
+  when: lesson == "del2"
