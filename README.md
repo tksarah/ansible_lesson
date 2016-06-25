@@ -21,18 +21,20 @@ Ansible ハンズオンを行うための以下の準備を行うPlaybook
 * ユーザのホームディレクトリにハンズオン用のツールを配置
 * ユーザ毎にAnsible HostとAnsible Targtのコンテナを起動
 
-## Run Playbook
+## Set User
 作成するユーザのリストを host_vars/127.0.0.1 へ記載する （要 Vault パスワード）
 ```
 group:
   - { name: 'user1' , port: '8091' }
   - { name: 'user2' , port: '8092' }
 ```
-main.yml の with_items のパラメータを修正する
+"group" 以外を使う場合、lesson{1,2}/tasks/main.yml の with_items のパラメータを修正する
 ```
       with_items:
         - "{{ group }}"
 ```
+
+## Run Playbook
 ユーザ毎にハンズオンできるように準備するためのPlaybookを実行
 
 ```
