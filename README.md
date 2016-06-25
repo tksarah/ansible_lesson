@@ -35,11 +35,11 @@ main.yml の with_items のパラメータを修正する
 ユーザ毎にハンズオンできるように準備するためのPlaybookを実行
 
 ```
-ansible-playbook -i hosts -e lesson=1 main.yml
+ansible-playbook -i hosts -e lesson=1 site.yml
 ```
 
 ホストのIPアドレスを渡す場合（[ホストの準備](https://github.com/tksarah/build_host)からでなく単体で利用する場合）
 
 ```
-ansible-playbook -i hosts -e "lesson=1 ip=192.168.10.10" main.yml
+ansible-playbook -i hosts -e "lesson=1 ip=192.168.10.10" site.yml
 ```
