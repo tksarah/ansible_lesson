@@ -1,0 +1,4 @@
+- name: Copy _test
+  copy: src=_test dest=/
+- name: Change mode auto_config.sh
+  file: path=/_test/auto_config.sh mode=0755

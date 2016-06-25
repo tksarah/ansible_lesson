@@ -5,5 +5,7 @@
   roles: 
     - { role: lesson1, when: "lesson == '1'" }
     - { role: lesson2, when: "lesson == '2'" }
+    - { role: delete1, when: "lesson == 'del1'" }
+    - { role: delete2, when: "lesson == 'del2'" }
       
 

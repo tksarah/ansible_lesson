@@ -1,3 +1,5 @@
 group:
-  - { name: 'aaa' , port: '8091' }
-  - { name: 'bbb' , port: '8092' }
+  - { name: 'user1' , port: '8091' }
+  - { name: 'user2' , port: '8092' }
+  - { name: 'user3' , port: '8093' }
+  - { name: 'user4' , port: '8094' }

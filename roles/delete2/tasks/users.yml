@@ -1,0 +1,2 @@
+- name: Delete lesson2 directory for {{ user }}
+  file: path="/home/{{ user }}/{{ ldir }}" state=absent
