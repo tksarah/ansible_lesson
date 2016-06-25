@@ -17,6 +17,6 @@
   roles: 
     - { role: lesson1, when: "lesson == '1'" }
     - { role: lesson2, when: "lesson == '2'" }
-    - { role: delete, when: "lesson == 'del1' or lesson == 'del2'" }
+    - { role: delete_only_dir, when: "lesson == 'del1' or lesson == 'del2'" }
     - { role: clear, when: "lesson == 'clear'" }
 

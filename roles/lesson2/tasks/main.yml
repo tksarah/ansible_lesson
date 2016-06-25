@@ -8,7 +8,6 @@
       with_items:
         - "{{ group }}"
 
-    - include_vars: docker_var.yml
     - include: rproxy.yml
 
   rescue:
