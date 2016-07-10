@@ -35,6 +35,7 @@ Ansible ハンズオンを行うための以下の準備を行うPlaybook
 group:
   - { name: 'user1' , port: '8091' , htty: '3001' , ttty: '3002' }
   - { name: 'user2' , port: '8092' , htty: '3003' , ttty: '3004' }
+```
 "group" 以外を使う場合、lesson{1,2}/tasks/main.yml の with_items のパラメータを修正する
 ```
       with_items:
