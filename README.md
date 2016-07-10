@@ -1,7 +1,7 @@
 # Lesson for Ansible Handson
 * CentOS 7.2
 * Docker Engine v1.11
-* Ansible 2.1.X （注意）
+* Ansible 2.1.X （注意）パッチ適用版（docker_container モジュールの複数ポート対応のBugFixed 2016/07/10）
 
 ## Administration tasks
 * ホストの準備をする。[ホストの準備](https://github.com/tksarah/build_host)
