@@ -21,13 +21,21 @@ Ansible ハンズオンを行うための以下の準備を行うPlaybook
 * ユーザのホームディレクトリにハンズオン用のツールを配置
 * ユーザ毎にAnsible HostとAnsible Targtのコンテナを起動
 
+## （Option）Web Console オプション
+**web_console = true** とすると、ユーザ毎WebConsole用のWettyコンテナが起動され、ブラウザ経由でSSHアクセスが可能。
+以下のようにしてブラウザからアクセス。ポート部分は各ユーザ毎にAnsibleホスト用とタゲット用に準備されるものを指定する。
+
+```
+ http://< Ansible ハンズオンマシン >:3001/wetty/ssh/root/
+
+```
+
 ## Set User
 作成するユーザのリストを host_vars/127.0.0.1 へ記載する （要 Vault パスワード）
 ```
 group:
-  - { name: 'user1' , port: '8091' }
-  - { name: 'user2' , port: '8092' }
-```
+  - { name: 'user1' , port: '8091' , htty: '3001' , ttty: '3002' }
+  - { name: 'user2' , port: '8092' , htty: '3003' , ttty: '3004' }
 "group" 以外を使う場合、lesson{1,2}/tasks/main.yml の with_items のパラメータを修正する
 ```
       with_items:
@@ -45,4 +53,14 @@ ansible-playbook -i hosts -e lesson=1 site.yml
 
 ```
 ansible-playbook -i hosts -e "lesson=1 ip=192.168.10.10" site.yml
+```
+
+Web Console を有効にする場合
+```
+ansible-playbook -i hosts -e "lesson=1 ip=192.168.10.10 web_console=true" site.yml
+```
+
+環境をクリアする場合
+```
+ansible-playbook -i hosts -e lesson=clear site.yml
 ```

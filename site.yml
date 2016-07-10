@@ -14,6 +14,9 @@
         - "/root/ansible_lesson/roles/lesson2/files/lesson2_files/tools/setup.sh"
       when: ip is defined
 
+  # when "web_console" is true(default false) ,
+  # this playbook run the wetty container for each user.
+
   roles: 
     - { role: lesson1, when: "lesson == '1'" }
     - { role: lesson2, when: "lesson == '2'" }

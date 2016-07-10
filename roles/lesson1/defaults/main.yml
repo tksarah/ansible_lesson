@@ -1,2 +1,4 @@
 group:
-  - { name: 'user1' , port: '8081' }
+  - { name: 'user1' , port: '8091' , htty: '3001' , ttty: '3002' }
+
+web_console: false
