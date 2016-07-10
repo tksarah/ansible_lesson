@@ -27,7 +27,6 @@ Ansible ハンズオンを行うための以下の準備を行うPlaybook
 
 ```
  http://< Ansible ハンズオンマシン >:3001/wetty/ssh/root/
-
 ```
 
 ## Set User
