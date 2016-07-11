@@ -5,6 +5,8 @@
       vars:
         user: "{{ item.name }}"
         port: "{{ item.port }}"
+        htty: "{{ item.htty }}"
+        ttty: "{{ item.ttty }}"
       with_items:
         - "{{ group }}"
 

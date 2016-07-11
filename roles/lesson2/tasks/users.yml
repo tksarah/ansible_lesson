@@ -42,3 +42,25 @@
       file: path=/home/{{ user }}/{{ ldir }}/tools/initial.sh state=absent
   become_user: "{{ user }}"
   become: true
+
+- block:
+    - name: Run containers for web console
+      docker_container:
+        name: "{{ user }}_wetty"
+        image: "tksarah/lesson_wetty"
+        detach: true
+        state: started
+        ports:
+          - "{{ htty }}:{{ htty }}"
+          - "{{ ttty }}:{{ ttty }}"
+        links:
+          - "{{ user }}_l2_host:ansible_host"
+          - "{{ user }}_l2_target:ansible_target"
+        env:
+          HTTY: "{{ htty }}"
+          TTTY: "{{ ttty }}"
+        tty: true
+
+  become_user: root
+  become: true
+  when: web_console
