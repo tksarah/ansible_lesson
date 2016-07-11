@@ -1,2 +1,3 @@
 group:
-  - { name: 'user1' , port: '8081' }
+  - { name: 'user1' , port: '8091' , htty: '3001' , ttty: '3002' }
+  - { name: 'user2' , port: '8092' , htty: '3003' , ttty: '3004' }
